@@ -3,7 +3,7 @@ Algoritmo Saltimbanqui_FuerzaBruta
 
     Definir n, i, resultado Como Entero
 	
-
+	Escribir "FUERZA BRUTA"
     Escribir "INGRESE LA CANTIDAD DE ASIENTOS :"
 	
 	Leer n

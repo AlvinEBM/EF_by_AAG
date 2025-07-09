@@ -3,7 +3,7 @@ Algoritmo Saltimbanqui_PD
   
     Definir n, i, j Como Entero
 	
-  
+	Escribir "PROGRAMACION DINAMICA"
     Escribir "INGRESE LA CANTIDAD DE ASIENTOS:"
     Leer n
 	
