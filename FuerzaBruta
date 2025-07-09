@@ -1,34 +1,36 @@
-def saltimbanquiFuerzaBruta(asientos, posicon):
-    n = len(asientos)
+def buscarSaltos(posicion, asientos, n):
 
-    
-    if posicon >= n - 1:
-        return 0
+    if posicion >= n:
+        minimo = 0
+    else:
+        minimo = 9999 
+        for i in range(1, asientos[posicion] + 1):
+            if (posicion + i) <= n:
+                saltosTemporal = buscarSaltos(posicion + i, asientos, n)
+                saltosTemporal = saltosTemporal + 1
 
-  
-    minimo = float('inf')
-
-   
-    for salto in range(1, asientos[posicon] + 1):
-        if posicon + salto < n:
-            saltos_restantes = saltimbanquiFuerzaBruta(asientos, posicon + salto)
-            minimo = min(minimo, 1 + saltos_restantes)
+                if saltosTemporal < minimo:
+                    minimo = saltosTemporal
 
     return minimo
 
 
-print("PROBLEMA DEL SALTIMBANQUI - FUERZA BRUTA")
-n = int(input("Ingrese la cantidad de asientos: "))
+print("INGRESE LA CANTIDAD DE ASIENTOS :")
+n = int(input())
 
 
-asientos = []
-for i in range(n):
-    valor = int(input(f"Ingrese el salto máximo para el asiento {i+1}: "))
-    asientos.append(valor)
+asientos = [0] * (n + 1)  # +1 porque no usaremos la posición 0
 
+for i in range(1, n + 1):
+    print(f"INGRESE LOS NUMEROS DE SALTOS PERMITIDOS {i}:")
+    asientos[i] = int(input())
 
-print("Fila de asientos ingresada:", asientos)
+print("NUMERO DE ASIENTOS")
+for i in range(1, n + 1):
+    print(f"ASIENTO {i}: SALTO MAXIMO = {asientos[i]}")
 
+print("-------------------------------------------")
 
-resultado = saltimbanquiFuerzaBruta(asientos, 0)
-print("El mínimo número de saltos (Fuerza Bruta) es:", resultado)
+resultado = buscarSaltos(1, asientos, n)
+
+print("EL MINIMO NUMERO DE SALTOS PARA LLEGAR AL FINAL SON:", resultado)
