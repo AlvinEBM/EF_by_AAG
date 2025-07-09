@@ -1,0 +1,34 @@
+def saltimbanquiFuerzaBruta(asientos, posicon):
+    n = len(asientos)
+
+    
+    if posicon >= n - 1:
+        return 0
+
+  
+    minimo = float('inf')
+
+   
+    for salto in range(1, asientos[posicon] + 1):
+        if posicon + salto < n:
+            saltos_restantes = saltimbanquiFuerzaBruta(asientos, posicon + salto)
+            minimo = min(minimo, 1 + saltos_restantes)
+
+    return minimo
+
+
+print("PROBLEMA DEL SALTIMBANQUI - FUERZA BRUTA")
+n = int(input("Ingrese la cantidad de asientos: "))
+
+
+asientos = []
+for i in range(n):
+    valor = int(input(f"Ingrese el salto máximo para el asiento {i+1}: "))
+    asientos.append(valor)
+
+
+print("Fila de asientos ingresada:", asientos)
+
+
+resultado = saltimbanquiFuerzaBruta(asientos, 0)
+print("El mínimo número de saltos (Fuerza Bruta) es:", resultado)
